@@ -1,0 +1,7 @@
+#include "resources.h"
+
+#define VERUNI_DESC         "Wrapper of Java for Façade"
+#define VERUNI_EXEC_NAME    "java"
+
+#include "inc_version.rc"
+#include "inc_manifest.rc"

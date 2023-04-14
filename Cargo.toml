@@ -1,0 +1,15 @@
+[package]
+name = "javawrapper"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+msgbox = "0.7"
+quit = "2.0"
+
+[build-dependencies]
+embed-resource = "2.1"
+
+[profile.release]
+lto = true
+strip = true

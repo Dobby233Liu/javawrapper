@@ -1,0 +1,26 @@
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     VER_FILEVER
+PRODUCTVERSION  VER_PRODVER
+FILEFLAGS       0
+FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+FILEOS          VOS_NT
+FILETYPE        VFT_APP
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "040904e4" // U.S. English, Windows-1252
+        BEGIN
+            VALUE "FileDescription",  VERUNI_DESC
+            VALUE "ProductName",      VER_PRODNAME
+            VALUE "CompanyName",      VER_COMPNAME
+            VALUE "LegalCopyright",   VER_COPYSTR
+            VALUE "FileVersion",      VER_FILEVER_STR
+            VALUE "ProductVersion",	  VER_PRODVER_STR
+            VALUE "OriginalFilename", VERUNI_EXEC_NAME ".exe"
+        END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x0409, 1252
+	END
+END
