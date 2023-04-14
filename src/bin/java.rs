@@ -32,7 +32,7 @@ fn main() -> Result<(), ::std::io::Error> {
 
     let my_full_path_b = env::current_exe()?;
     let my_full_path = my_full_path_b.as_path();
-    let exe_path = my_full_path.parent().unwrap();
+    let exe_path = my_full_path.parent()?;
 
     let mut java_exe = process::Command::new(
         exe_path.join(cfg.orig_exe)
