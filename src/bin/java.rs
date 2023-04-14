@@ -1,13 +1,23 @@
 use std::env;
-use std::io;
-use std::process::Command;
+use std::process;
 
 use quit;
+use confy;
 
 use msgbox;
 
+#[derive(::serde::Serialize, ::serde::Deserialize)]
+struct WrapperConfig {
+    orig_exe: String,
+}
+impl ::std::default::Default for WrapperConfig {
+    fn default() -> Self { Self { orig_exe: "java_".into() } }
+}
+
 #[quit::main]
-fn main() -> Result<(), io::Error> {
+fn main() -> Result<(), ::std::io::Error> {
+    let cfg : WrapperConfig = confy::load("javawrapper")?;
+
     let mut args : Vec<String> = env::args().collect();
 
     // Debug provided args
@@ -24,7 +34,9 @@ fn main() -> Result<(), io::Error> {
     let my_full_path = my_full_path_b.as_path();
     let exe_path = my_full_path.parent().unwrap();
 
-    let mut java_exe = Command::new(exe_path.join("java_"));
+    let mut java_exe = process::Command::new(
+        exe_path.join(cfg.orig_exe)
+    );
     java_exe.args(args.drain(1..));
 
     quit::with_code(match java_exe.status() {
